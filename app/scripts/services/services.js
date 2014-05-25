@@ -107,9 +107,10 @@ app.value('words', [{
             },
 
           question: function(){
-              //Finds
+
               questionToRemove = questionsBucket.indexOf(answers[Math.floor(Math.random() * amount)]);
               question = questionsBucket.splice(questionToRemove, 1)[0];
+
               return question;
             }
         };

@@ -1,20 +1,33 @@
-<section ng-show='playing'>
-  <h1> Welcome to the Game you are on round {{ round }}</h1>
-  <article class='question'>
-    <h1>{{ question.en }}</h1>
-    <h3>{{ question.def }}</h3>
-  </article>
+<section class='game-container'>
 
-  <article class='answers' ng-repeat='answer in answers'>
-    <div ng-click='submitAnswer(question, answer)'>{{ answer.es }}</div>
-  </article>
-</section>
+  <section ng-show='playing' class="playing">
+    <article class='question'>
+      <h1>{{ question.en }}</h1>
+      <h3>{{ question.def }}</h3>
+    </article>
 
-<section ng-show='!playing'>
-  <h1> {{message}}</h1>
-  <p>You got {{score}} points</p>
-  <form ng-submit="submitScore()">
-    <input type='text' ng-model='name' required>
-    <input type='submit' value='Submit'>
-  </form>
+    <article class='answers'>
+      <div class='answers-wrapper'>
+        <button
+                ng-click='submitAnswer(question, answer)'
+                ng-repeat='answer in answers'
+                type="button"
+                class="btn btn-answers">
+          {{ answer.es }}
+        </button>
+        <div class='clear'>
+      </div>
+      <div class='clear'>
+    </article>
+
+  </section>
+
+  <section ng-show='!playing'>
+    <h1> {{message}}</h1>
+    <p>You got {{score}} points</p>
+    <form ng-submit="submitScore()">
+      <input type='text' ng-model='name' required>
+      <input type='submit' value='Submit'>
+    </form>
+  </section>
 </section>

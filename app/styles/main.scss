@@ -1,6 +1,65 @@
 // bower:scss
 // endbower
-
-h1 {
-  color: red;
+//GAME CSS
+.clear{
+  clear: both;
 }
+body {
+  background-color: #56ACE5;
+}
+
+.logo{
+  text-align: center;
+  width: 400px;
+  margin: 15px auto;
+  color: white;
+  font-family: maven-pro, arial;
+  font-size: 36px;
+}
+
+
+.game-container{
+  background-color: #66BCF5;
+  border: 1px solid white;
+  width: 960px;
+  height: 300px;
+  margin: 115px auto;
+  border-radius: 3px;
+  text-align: center;
+  font-family: dhyana, sans-serif;
+}
+
+.playing{
+  padding-top: 20px;
+}
+
+.question{
+  margin-top: 20px;
+}
+
+.answers {
+  width: 900px;
+  margin: 0px auto 0px auto;
+}
+
+.answers-wrapper {
+  margin: auto;
+  width: 660px;
+}
+
+.btn-answers {
+  color: black;
+  background-color: #FCE331;
+  width: 200px;
+  height: 90px;
+  float: left;
+  margin: 47px 10px 47px 10px;
+  font-size: 22px;
+}
+
+.btn:hover {
+  background-color: #F5D806;
+  color: black;
+}
+
+
