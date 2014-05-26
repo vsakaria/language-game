@@ -8,12 +8,12 @@
 
     <article class='answers'>
       <div class='answers-wrapper'>
-        <button
-                ng-click='submitAnswer(question, answer)'
+        <button ng-class="{'clicked':clicked, 'correct' : answer.answer == 'correct' }"
+                ng-click="clicked = true"
                 ng-repeat='answer in answers'
                 type="button"
-                class="btn btn-answers">
-          {{ answer.es }}
+                class="btn btn-answers answer-animation">
+          {{ answer.answer }}
         </button>
         <div class='clear'>
       </div>
@@ -21,10 +21,7 @@
 
   </section>
 
-  <section
-          ng-show='!playing'
-          ng-controller='Highscores'
-          class='highscore-form'>
+  <section ng-show='!playing' ng-controller='Highscores' class='highscore-form'>
     <h1> {{message}}</h1>
     <p>You got {{score}} points</p>
 
