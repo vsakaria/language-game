@@ -9,6 +9,7 @@ app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
     $scope.round = 1;
     $scope.playing = true;
 
+    QA.setUpGameData();
     $scope.answers = QA.answers();
     $scope.question = QA.question();
 
@@ -17,6 +18,7 @@ app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
         if(question.en === answer.en){
           $scope.round++;
 
+          QA.setUpGameData();
           $scope.answers = QA.answers();
           $scope.question = QA.question();
 
@@ -43,7 +45,4 @@ app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
         $scope.highscores = Highscores.get();
         $location.path('/highscores');
       };
-
-
-
     });

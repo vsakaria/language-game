@@ -88,38 +88,46 @@ app.value('words', [{
       var questionsBucket = answersBucket;
       var questionToRemove, answers, question, amount;
 
+
+      function getGameData(){
+        getAnswers(3);
+        getQuestion();
+        setCorrectAnswer();
+      };
+
+      function getAnswers(number){
+        if(typeof(number) === 'undefined'){
+            amount = 3;
+        } else { amount = number; }
+
+        answers = ShuffleArray.shuffle(answersBucket).slice(0,amount);
+      };
+
+      function getQuestion(){
+        questionToRemove = questionsBucket.indexOf(answers[Math.floor(Math.random() * amount)]);
+        question = questionsBucket.splice(questionToRemove, 1)[0];
+      };
+
+      function  setCorrectAnswer(){
+        answers[answers.indexOf(question)]['answer'] = 'correct';
+      };
+
       var QA = {
           reset: function(){
             answersBucket = RandWords.get(9);
             questionsBucket = answersBucket;
           },
-
-          //I didn't want to expose this data but due to testing I had to.
-          questionsBucket: questionsBucket,
-
-          answers: function(number){
-              if(typeof(number) === 'undefined'){
-                amount = 3;
-              } else { amount = number; }
-
-              answers = ShuffleArray.shuffle(answersBucket).slice(0,amount);
-              return answers;
-            },
-
-          question: function(){
-
-              questionToRemove = questionsBucket.indexOf(answers[Math.floor(Math.random() * amount)]);
-              question = questionsBucket.splice(questionToRemove, 1)[0];
-
-              return question;
-            }
+          setUpGameData: function(){
+            getGameData();
+            console.log(answers);
+          },
+          answers: function(){ return answers },
+          question: function(){ return question },
+          questionsBucket: questionsBucket
         };
       return QA;
     })
 
   .factory('Highscores', function($resource){
       return $resource('https://language-game.firebaseio.com/highscores.json');
-      //Setup $resouces.
-      //Create Get requests.
-      //Create Post request.
     });
