@@ -8,15 +8,49 @@ body {
   background-color: #56ACE5;
 }
 
-.logo{
+nav {
+  margin: 15px auto;
+  width: 300px;
+  padding-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+// nav ul {
+//   padding-left: 10px;
+// }
+
+.logo, .logo h2{
   text-align: center;
   width: 400px;
   margin: 15px auto;
   color: white;
-  font-family: maven-pro, arial;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
   font-size: 36px;
 }
 
+main {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+}
+
+main section {
+  margin: 85px 0;
+}
+main h1{
+  font-size: 60px;
+  font-weight: lighter;
+  color: white;
+}
 
 .game-container{
   background-color: #66BCF5;
@@ -51,9 +85,9 @@ body {
   color: black;
   background-color: #FCE331;
   width: 200px;
-  height: 90px;
+  height: 85px;
   float: left;
-  margin: 47px 10px 47px 10px;
+  margin: 35px 10px 47px 10px;
   font-size: 22px;
 }
 
@@ -62,4 +96,28 @@ body {
   color: black;
 }
 
+.highscore {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+}
 
+.highscore h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 60px;
+  font-weight: lighter;
+  color: white;
+}
+
+.highscore table {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: lighter;
+  color: white;
+  margin: 0 auto;
+  margin-top: 55px;
+}
+
+.highscore table  td{
+  padding: 5px 10px;
+}

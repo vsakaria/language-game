@@ -115,4 +115,11 @@ app.value('words', [{
             }
         };
       return QA;
+    })
+
+  .factory('Highscores', function($resource){
+      return $resource('https://language-game.firebaseio.com/highscores.json');
+      //Setup $resouces.
+      //Create Get requests.
+      //Create Post request.
     });

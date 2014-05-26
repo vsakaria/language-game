@@ -17,17 +17,21 @@
         </button>
         <div class='clear'>
       </div>
-      <div class='clear'>
     </article>
 
   </section>
 
-  <section ng-show='!playing'>
+  <section
+          ng-show='!playing'
+          ng-controller='Highscores'>
     <h1> {{message}}</h1>
     <p>You got {{score}} points</p>
+
     <form ng-submit="submitScore()">
       <input type='text' ng-model='name' required>
       <input type='submit' value='Submit'>
     </form>
+
   </section>
+
 </section>

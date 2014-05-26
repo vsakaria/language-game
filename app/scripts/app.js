@@ -2,7 +2,8 @@
 
 var app  = angular
   .module('languageGameApp', [
-    'ngRoute'
+    'ngRoute',
+    'ngResource'
   ])
 .config(function($routeProvider, $locationProvider) {
     $routeProvider
@@ -14,7 +15,7 @@ var app  = angular
         controller: 'Game'
       })
       .when('/highscores', {
-        templateUrl: 'partials/highscores.html',
+        templateUrl: 'views/partials/highscores.html',
         controller: 'Highscores'
       })
       .otherwise({

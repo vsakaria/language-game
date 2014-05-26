@@ -44,4 +44,15 @@ app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
         $location.path('/highscores');
       });
     };
-  });
+  })
+
+  .controller('Highscores', function($scope, Highscores){
+      $scope.highscores = Highscores.get();
+
+      $scope.submitScore = function(){
+        Highscores.save({"name": $scope.name, "score": $scope.score });
+      };
+
+
+
+    });
