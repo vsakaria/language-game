@@ -23,13 +23,17 @@
 
   <section
           ng-show='!playing'
-          ng-controller='Highscores'>
+          ng-controller='Highscores'
+          class='highscore-form'>
     <h1> {{message}}</h1>
     <p>You got {{score}} points</p>
 
-    <form ng-submit="submitScore()">
-      <input type='text' ng-model='name' required>
-      <input type='submit' value='Submit'>
+    <form class="input-group input-group-lg" ng-submit="submitScore()">
+      <input class="form-control" type='text' ng-model='name' required>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type='submit' value='Submit'>Go!</button>
+      </span>
+      <!-- <input type='submit' value='Submit'> -->
     </form>
 
   </section>

@@ -33,24 +33,15 @@ app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
         }
       }
     };
-
-    $scope.submitScore = function(){
-      $http({
-        method: 'POST',
-        url: 'api/highscores',
-        data: {"name": $scope.name, "score": $scope.score}
-      })
-      .success(function(data, status, headers, config){
-        $location.path('/highscores');
-      });
-    };
   })
 
-  .controller('Highscores', function($scope, Highscores){
+  .controller('Highscores', function($scope, $location, Highscores){
       $scope.highscores = Highscores.get();
 
       $scope.submitScore = function(){
         Highscores.save({"name": $scope.name, "score": $scope.score });
+        $scope.highscores = Highscores.get();
+        $location.path('/highscores');
       };
 
 

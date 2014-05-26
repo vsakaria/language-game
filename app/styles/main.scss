@@ -96,6 +96,24 @@ main h1{
   color: black;
 }
 
+.highscore-form {
+  margin: 85px 0;
+}
+.highscore-form form{
+  width: 500px;
+  margin: 0 auto;
+}
+
+.highscore-form form .btn {
+  background-color: #F5D806;
+  color: black;
+}
+
+.highscore-form form .btn:hover {
+  background-color: #5fd405;
+  border-color: #5fd405;
+  color: black;
+}
 .highscore {
   margin: 0 auto;
   width: 800px;
@@ -116,6 +134,7 @@ main h1{
   color: white;
   margin: 0 auto;
   margin-top: 55px;
+  text-align: left;
 }
 
 .highscore table  td{
