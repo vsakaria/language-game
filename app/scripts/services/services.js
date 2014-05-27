@@ -119,7 +119,6 @@ app.value('words', [{
           },
           setUpGameData: function(){
             getGameData();
-            console.log(answers);
           },
           answers: function(){ return answers },
           question: function(){ return question },

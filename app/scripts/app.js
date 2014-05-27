@@ -1,5 +1,7 @@
 'use strict';
 
+/* global $:true */
+
 var app  = angular
   .module('languageGameApp', [
     'ngRoute',
@@ -39,23 +41,24 @@ app.directive(['clicked', function(clicked) {
 }]);
 
 app.animation('.answer-animation', function(){
+
   return {
     beforeAddClass: function(element, className, done){
+
       if (className === 'clicked') {
-        $(element).addClass('animated wobble');
-
-      }
-      else {
-        done();
-      }
-    },
-
-    beforeRemoveClass: function(element, className, done) {
-      if (className == 'clicked') {
+        if( $(element).hasClass('correct') ){
+          $(element).addClass('animated bounce');
+        } else {
+          $(element).addClass('animated wobble');
         }
-      else {
-        done();
       }
+      $(element).one(
+        'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+        function(){
+          console.log('callled')
+          var scope = angular.element(element).scope();
+          scope.submitAnswer(scope.question, scope.answer );
+        });
     }
   };
 });

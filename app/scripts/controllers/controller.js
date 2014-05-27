@@ -1,8 +1,10 @@
 'use strict';
 
+/* global app:true */
+
 /* Controllers */
 
-app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
+app.controller('Game', function($scope, $http, $location, $timeout, QA, Rounds ) {
     //Reset all QA buckets
     QA.reset();
 
@@ -14,13 +16,19 @@ app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
     $scope.question = QA.question();
 
     $scope.submitAnswer = function(question, answer){
+      console.log('Submit Answer Called')
       if($scope.round <= Rounds) {
         if(question.en === answer.en){
           $scope.round++;
 
           QA.setUpGameData();
-          $scope.answers = QA.answers();
-          $scope.question = QA.question();
+          $scope.$apply(function(){
+            $scope.answers = QA.answers();
+          });
+
+          $scope.$apply(function(){
+            $scope.question = QA.question();
+          });
 
           if($scope.round === Rounds + 1){
             $scope.playing = false;
