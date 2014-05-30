@@ -4,7 +4,7 @@
 
 /* Controllers */
 
-app.controller('Game', function($scope, $http, $location, $timeout, QA, Rounds ) {
+app.controller('Game', function($scope, $http, $location, QA, Rounds ) {
     //Reset all QA buckets
     QA.reset();
 
@@ -15,37 +15,45 @@ app.controller('Game', function($scope, $http, $location, $timeout, QA, Rounds )
     $scope.answers = QA.answers();
     $scope.question = QA.question();
 
-    $scope.submitAnswer = function(question, answer){
-      console.log('Submit Answer Called')
-      if($scope.round <= Rounds) {
-        if(question.en === answer.en){
-          $scope.round++;
+    $scope.submitAnswer = function(question, answer)
+    {
 
+      if($scope.round <= Rounds)
+      {
+        if(question.en === answer.en)
+        {
           QA.setUpGameData();
-          $scope.$apply(function(){
+
+          $scope.$apply(function() {
             $scope.answers = QA.answers();
           });
 
-          $scope.$apply(function(){
+          $scope.$apply(function() {
             $scope.question = QA.question();
           });
 
-          if($scope.round === Rounds + 1){
+          $scope.$apply(function() {
+            $scope.round++;
+          });
+
+          if($scope.round === Rounds + 1) {
             $scope.playing = false;
             $scope.message = 'Amazing well done!';
             $scope.score = ($scope.round-1) * 1000;
           }
+
         }
-        else {
+        else
+        {
           $scope.playing = false;
           $scope.message = 'Sorry Wrong Answer :(';
           $scope.score = ($scope.round-1) * 1000;
         }
       }
     };
-  })
+  });
 
-  .controller('Highscores', function($scope, $location, Highscores){
+  app.controller('Highscores',[ '$scope', '$location', 'Highscores', function($scope, $location, Highscores){
       $scope.highscores = Highscores.get();
 
       $scope.submitScore = function(){
@@ -53,4 +61,4 @@ app.controller('Game', function($scope, $http, $location, $timeout, QA, Rounds )
         $scope.highscores = Highscores.get();
         $location.path('/highscores');
       };
-    });
+    }]);

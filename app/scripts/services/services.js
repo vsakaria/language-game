@@ -93,24 +93,24 @@ app.value('words', [{
         getAnswers(3);
         getQuestion();
         setCorrectAnswer();
-      };
+      }
 
       function getAnswers(number){
         if(typeof(number) === 'undefined'){
-            amount = 3;
+          amount = 3;
         } else { amount = number; }
 
         answers = ShuffleArray.shuffle(answersBucket).slice(0,amount);
-      };
+      }
 
       function getQuestion(){
         questionToRemove = questionsBucket.indexOf(answers[Math.floor(Math.random() * amount)]);
         question = questionsBucket.splice(questionToRemove, 1)[0];
-      };
+      }
 
       function  setCorrectAnswer(){
         answers[answers.indexOf(question)]['answer'] = 'correct';
-      };
+      }
 
       var QA = {
           reset: function(){
@@ -127,6 +127,6 @@ app.value('words', [{
       return QA;
     })
 
-  .factory('Highscores', function($resource){
+  .factory('Highscores', ['$resource', function($resource){
       return $resource('https://language-game.firebaseio.com/highscores.json');
-    });
+    }]);

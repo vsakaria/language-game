@@ -9,7 +9,7 @@
     <article class='answers'>
       <div class='answers-wrapper'>
         <button ng-class="{'clicked':clicked, 'correct' : answer.answer == 'correct' }"
-                ng-click="clicked = true"
+                ng-click='submitAnswer(question, answer)'
                 ng-repeat='answer in answers'
                 type="button"
                 class="btn btn-answers answer-animation">

@@ -52,13 +52,24 @@ app.animation('.answer-animation', function(){
           $(element).addClass('animated wobble');
         }
       }
+
       $(element).one(
         'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
         function(){
-          console.log('callled')
-          var scope = angular.element(element).scope();
-          scope.submitAnswer(scope.question, scope.answer );
-        });
+          console.log('ENDED');
+          var $scope = angular.element(element).scope();
+
+          console.log($scope.answer);
+          console.log($scope.question);
+
+          $scope.submitAnswer($scope.question, $scope.answer);
+      });
     }
   };
 });
+
+
+
+
+
+
